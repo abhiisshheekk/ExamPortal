@@ -69,14 +69,17 @@ class Teacher:
         for i in range(4):
             temp = input(f"Enter option {i}: ").strip()
             options.append(temp)
+        answer = input("Enter Answer: ").strip()
         
         if subject_name not in quizzes_list.keys():
             raise Exception('No such subject found')
 
         new_quiz_data = {
+            "author": self.name,
             "Question": question,
-            "Options": options
+            "Options": options,
+            "Answer": answer
         }
-        # quizzes_list[subject_name] = quiz_name
+
         quizzes_list[subject_name][quiz_name] = new_quiz_data
         DatabaseHandler().add_new_quiz(quizzes_list)
